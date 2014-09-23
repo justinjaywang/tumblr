@@ -4,3 +4,5 @@
 - Option to hide navigation
 - Headers on tag pages
 - Larger post wrapper
+
+![Iso screenshot](iso.png)
