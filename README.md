@@ -1,4 +1,4 @@
-Tumblr theme based on [Optica](https://www.tumblr.com/theme/37310). Areas of customization:
+*Iso* is a Tumblr theme based on [Optica](https://www.tumblr.com/theme/37310). Areas of customization:
 
 - Inline search
 - Option to hide navigation
