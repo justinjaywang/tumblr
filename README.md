@@ -1,4 +1,7 @@
-**Iso** is a Tumblr theme based on [Optica](https://www.tumblr.com/theme/37310). It features:
+A collection of Tumblr themes.
+
+---
+**ISO** is a Tumblr theme based on [Optica](https://www.tumblr.com/theme/37310). It features:
 
 - Inline search
 - Option to hide navigation
