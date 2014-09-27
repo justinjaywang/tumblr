@@ -9,3 +9,5 @@ A collection of Tumblr themes.
 - Larger post wrapper
 
 ![Iso screenshot](iso.png)
+
+*ISO theme, as used on [justinjaywang.tumblr.com](http://justinjaywang.tumblr.com/).*
