@@ -203,6 +203,9 @@
             .photo .photo-wrapper-inner {
                 padding: 0;
             }
+            figure:not(.high-res) .photo-wrapper img[src$='.gif'] {
+                margin: 0;
+            }
             .photo .high-res img {
                 width: auto;
                 max-height: 1024px;
