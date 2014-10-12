@@ -8,6 +8,6 @@ A collection of Tumblr themes.
 - Headers on tag pages
 - Larger post wrapper
 
-![Iso screenshot](iso.png)
+![Iso screenshot](https://raw.githubusercontent.com/justinjaywang/images/master/screenshots--tumblr/iso.png)
 
 *ISO theme, as used on [justinjaywang.tumblr.com](http://justinjaywang.tumblr.com/).*
