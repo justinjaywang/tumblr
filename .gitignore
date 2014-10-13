@@ -23,3 +23,5 @@ Thumbs.db
 archive
 build
 node_modules
+lib
+scratch
