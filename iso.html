@@ -7,7 +7,7 @@
     <head>
         {MobileAppHeaders}
         <meta charset="utf-8">
-        <!-- <title>{Title}{block:SearchPage} — {lang:search results for SearchQuery}{/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title> -->
+        <title>{Title}{block:SearchPage} — "{SearchQuery}"{/block:SearchPage}{block:TagPage} — #{Tag}{/block:TagPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
         <title>{Title}</title>
         {block:Description}
         <meta name="description" content="{MetaDescription}">
@@ -17,6 +17,7 @@
         <meta name="if:Sliding header" content="0">
         <meta name="if:Show navigation" content="0">
         <meta name="if:Collapse navigation" content="1">
+        <meta name="if:Show social" content="0">
         <meta name="if:Endless scrolling" content="1">
 
         <meta name="select:Layout" content="regular" title="Regular">
@@ -208,7 +209,7 @@
             }
             .photo .high-res img {
                 width: auto;
-                max-height: 1024px;
+                max-height: 768px;
             }
             .attribution-tags {
                 text-align: center;
@@ -621,6 +622,7 @@
                                     
                                     {block:Date}
                                     <section class="panel">
+                                        {block:IfShowSocial}
                                         <footer class="post-footer">
                                             <section class="meta"> 
                                                 <ul class="date-notes">
@@ -656,34 +658,39 @@
                                                 </ul>
                                             </section>
                                         </footer>
+                                        {/block:IfShowSocial}
                                     </section>
                                     {/block:Date}
                                     {block:PermalinkPage}
 
-                                        {block:PostNotes}
-                                        <section id="notes" class="notes-wrapper clearfix">
-                                            {PostNotes-64}
-                                        </section>
-                                        {/block:PostNotes}
+                                        {block:IfShowSocial}
 
-                                        {block:Date}
-
-                                            {block:IfDisqusShortname}
-                                            <section class="comments">
-                                                <div id="disqus_thread"></div>
-                                                <script type="text/javascript">
-                                                  (function() {
-                                                   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                                                   dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
-                                                   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                                                  })();
-                                                </script>
-                                                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
-                                                <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+                                            {block:PostNotes}
+                                            <section id="notes" class="notes-wrapper clearfix">
+                                                {PostNotes-64}
                                             </section>
-                                            {/block:IfDisqusShortname}
+                                            {/block:PostNotes}
 
-                                        {/block:Date}
+                                            {block:Date}
+
+                                                {block:IfDisqusShortname}
+                                                <section class="comments">
+                                                    <div id="disqus_thread"></div>
+                                                    <script type="text/javascript">
+                                                      (function() {
+                                                       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                                       dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+                                                       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                                      })();
+                                                    </script>
+                                                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+                                                    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+                                                </section>
+                                                {/block:IfDisqusShortname}
+
+                                            {/block:Date}
+
+                                        {/block:IfShowSocial}
 
                                     {/block:PermalinkPage}
                                 </div>
