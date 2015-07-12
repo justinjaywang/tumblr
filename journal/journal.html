@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{Title}{block:SearchPage} — "{SearchQuery}"{/block:SearchPage}{block:TagPage} — #{Tag}{/block:TagPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    {block:Description}
+      <meta name="description" content="{MetaDescription}">
+    {/block:Description}
+    {block:Hidden}
+      <meta name="text:Google analytics ID" content="">
+    {/block:Hidden}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+    <style>
+      /* reset */
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video
+      {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      /* fonts */
+      @import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+      /* base */
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      *:before,
+      *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      html {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        font-size: 14.5px;
+      }
+      body {
+        background: {BackgroundColor};
+        color: #333;
+        font-family: Inconsolata, monospace;
+        font-size: 1rem;
+        line-height: 1.4;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      h1,
+      h2,
+      h3 {
+        font-weight: 700;
+        margin-bottom: 1.4rem;
+      }
+      em {
+        font-style: normal;
+        font-weight: 700;
+      }
+      strong {
+        font-weight: 700;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      /* container */
+      .page-header,
+      .page-footer,
+      .post-meta,
+      .post-caption,
+      .post {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .page-header,
+      .page-footer,
+      .post-meta,
+      .post.text,
+      .post.quote,
+      .post.link,
+      .post.chat,
+      .post-caption {
+        width: 100%;
+        max-width: 42rem;
+      }
+      .post.photo,
+      .post.panorama,
+      .post.photoset,
+      .post.video,
+      .post.audio {
+        max-width: 960px;
+      }
+      .page-header,
+      .page-footer,
+      .post-title,
+      .post-meta,
+      .post.photo,
+      .post.panorama,
+      .post.photoset,
+      .post.video,
+      .post.audio,
+      .post-caption {
+        text-align: center;
+      }
+      /* header */
+      .page-header {
+        margin-top: 8.4rem;
+        margin-bottom: 12.6rem;
+      }
+      /* footer */
+      .page-footer {
+        margin-top: 12.6rem;
+        margin-bottom: 8.4rem;
+      }
+      .page-footer-link:not(:first-child) {
+        margin-left: 0.75rem;
+      }
+      /* main */
+      .post {
+        margin-top: 12.6rem;
+        margin-bottom: 1.4rem;
+      }
+      .post-body a,
+      .post-caption a {
+        text-decoration: underline;
+      }
+      .post img {
+        margin-bottom: 1.4rem;
+      }
+      .post ol,
+      .post ul {
+        list-style-type: square;
+        padding-left: 2rem;
+      }
+      .post p,
+      .post ul,
+      .post ol {
+        margin-bottom: 1.4rem;
+      }
+      .post-caption {
+        margin-top: 1.4rem;
+      }
+      .post-meta {
+        margin-top: 1.4rem;
+        margin-bottom: 12.6rem;
+        color: #999;
+      }
+      .post-meta > * {
+        display: inline-block;
+      }
+      .post-meta > *:not(:last-child):after {
+        content: '\0020·\0020';
+      }
+      .post-tags {
+        list-style: none;
+        padding-left: 0;
+      }
+      .post-tag {
+        display: inline;
+      }
+      .post-title-link:after {
+        content: '\0020→';
+        font-weight: normal;
+      }
+      /* utilities */
+      .align-left {
+        text-align: left;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header class="page-header">
+      <h1 class="page-title"><a href="/">{Title}</a></h1>
+      {block:Description}
+        <p class="page-description">{Description}</p>
+      {/block:Description}
+    </header>
+
+    <section class="posts">
+      {block:Posts}
+        {block:Text}
+          <article class="post text">
+            {block:Title}
+              <h3 class="post-title"><a href="{Permalink}">{Title}</a></h3>
+            {/block:Title}
+            <section class="post-body">
+              {Body}
+            </section>
+          </article>
+        {/block:Text}
+        {block:Photo}
+          <article class="post photo">
+            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+            {block:Caption}
+              <div class="post-caption">{Caption}</div>
+            {/block:Caption}
+          </article>
+        {/block:Photo}
+        {block:Panorama}
+          <article class="post panorama">
+            {LinkOpenTag}
+              <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+            {LinkCloseTag}
+          </article>
+        {/block:Panorama}
+        {block:Photoset}
+          <article class="post photoset">
+            {block:Photos}
+              <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+            {/block:Photos}
+            {block:Caption}
+              <div class="post-caption">{Caption}</div>
+            {/block:Caption}
+          </article>
+        {/block:Photoset}
+        {block:Quote}
+          <article class="post quote">
+            <span class="quote-text">{Quote}</span>
+            {block:Source}
+              <span class="quote-source">{Source}</span>
+            {/block:Source}
+          </article>
+        {/block:Quote}
+        {block:Link}
+          <article class="post link">
+            <h3 class="post-title"><a class="post-title-link" href="{URL}" {Target}>{Name}</a></h3>
+            {block:Description}
+              <div class="post-caption">{Description}</div>
+            {/block:Description}
+          </article>
+        {/block:Link}
+        {block:Chat}
+          <article class="post chat">
+            {block:Title}
+              <h3 class="post-title"><a href="{Permalink}">{Title}</a></h3>
+            {/block:Title}
+            <ul class="chat">
+              {block:Lines}
+                <li class="{Alt} user_{UserNumber}">
+                  {block:Label}
+                    <span class="label">{Label}</span>
+                  {/block:Label}{Line}
+                </li>
+              {/block:Lines}
+            </ul>
+          </article>
+        {/block:Chat}
+        {block:Video}
+          <article class="post video">
+            {Video-500}
+            {block:Caption}
+              <div class="post-caption">{Caption}</div>
+            {/block:Caption}
+          </article>
+        {/block:Video}
+        {block:Audio}
+          <article class="post audio">
+            {block:AlbumArt}
+              <img class="audio-art" src="{AlbumArtURL}" />
+            {/block:AlbumArt}
+            {AudioEmbed}
+            {block:Caption}
+              <div class="post-caption">{Caption}</div>
+            {/block:Caption}
+          </article>
+        {/block:Audio}
+        <section class="post-meta">
+          {block:Date}
+            <time class="post-date">
+              <a class="post-date-link" href="{Permalink}">{DayOfMonth}&nbsp;{ShortMonth}&nbsp;{Year}</a>
+            </time>
+          {/block:Date}
+          {block:HasTags}
+            <ul class="post-tags">
+               {block:Tags}
+                 <li class="post-tag">
+                   <a class="post-tag-link" href="{TagURL}">#{Tag}</a>
+                 </li>
+               {/block:Tags}
+            </ul>
+          {/block:HasTags}
+        </section>
+      {/block:Posts}
+    </section>
+
+    <footer class="page-footer">
+      {block:IndexPage}
+        {block:Pagination}
+          {block:PreviousPage}
+            <a class="page-footer-link" href="{PreviousPage}">&#171;&nbsp;Previous</a>
+          {/block:PreviousPage}{block:NextPage}
+            <a class="page-footer-link" href="{NextPage}">Next&nbsp;&#187;</a>
+          {/block:NextPage}
+        {/block:Pagination}
+      {/block:IndexPage}
+      <a class="page-footer-link" href="/archive">Archive</a>
+    </footer>
+
+    {block:IfGoogleAnalyticsID}
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '{text:Google Analytics ID}', 'tumblr.com');
+        ga('send', 'pageview');
+      </script>
+    {/block:IfGoogleAnalyticsID}
+  </body>
+</html>

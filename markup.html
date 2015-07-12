@@ -30,7 +30,7 @@
       {/block:Description}
     </header>
 
-    <main class="page-main">
+    <section class="posts">
       {block:Posts}
         {block:Text}
           <article class="post text">
@@ -46,7 +46,7 @@
           <article class="post photo">
             <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
             {block:Caption}
-              <p class="caption">{Caption}</p>
+              <div class="post-caption">{Caption}</div>
             {/block:Caption}
           </article>
         {/block:Photo}
@@ -55,9 +55,6 @@
             {LinkOpenTag}
               <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
             {LinkCloseTag}
-            {block:Caption}
-              <p class="caption">{Caption}</p>
-            {/block:Caption}
           </article>
         {/block:Panorama}
         {block:Photoset}
@@ -66,7 +63,7 @@
               <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
             {/block:Photos}
             {block:Caption}
-              <p class="caption">{Caption}</p>
+              <div class="post-caption">{Caption}</div>
             {/block:Caption}
           </article>
         {/block:Photoset}
@@ -106,7 +103,7 @@
           <article class="post video">
             {Video-500}
             {block:Caption}
-              <p class="caption">{Caption}</p>
+              <div class="post-caption">{Caption}</div>
             {/block:Caption}
           </article>
         {/block:Video}
@@ -117,7 +114,7 @@
             {/block:AlbumArt}
             {AudioEmbed}
             {block:Caption}
-              <p class="caption">{Caption}</p>
+              <div class="post-caption">{Caption}</div>
             {/block:Caption}
           </article>
         {/block:Audio}
@@ -138,7 +135,7 @@
           {/block:HasTags}
         </section>
       {/block:Posts}
-    </main>
+    </section>
 
     <footer class="page-footer">
       {block:IndexPage}
