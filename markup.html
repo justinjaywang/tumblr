@@ -1,104 +1,167 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{Title}</title>
+    <title>{Title}{block:SearchPage} — "{SearchQuery}"{/block:SearchPage}{block:TagPage} — #{Tag}{/block:TagPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
     {block:Description}
-      <meta name="description" content="{MetaDescription}" />
+      <meta name="description" content="{MetaDescription}">
     {/block:Description}
+    {block:Hidden}
+      <meta name="font:Body" content="sans-serif">
+      <meta name="text:Google analytics ID" content="">
+    {/block:Hidden}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+    <style>
+
+    </style>
+
   </head>
   <body>
-    <h1>{Title}</h1>
+    <header class="page-header">
+      <h1 class="page-title">{Title}</h1>
+      {block:Description}
+        <p class="page-description">{Description}</p>
+      {/block:Description}
+    </header>
 
-    {block:Description}
-      <p id="description">{Description}</p>
-    {/block:Description}
+    <main class="page-main">
+      {block:Posts}
+        {block:Text}
+          <article class="post text">
+            {block:Title}
+              <h3 class="post-title"><a href="{Permalink}">{Title}</a></h3>
+            {/block:Title}
+            <section class="post-body">
+              {Body}
+            </section>
+          </article>
+        {/block:Text}
+        {block:Photo}
+          <article class="post photo">
+            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+            {block:Caption}
+              <p class="caption">{Caption}</p>
+            {/block:Caption}
+          </article>
+        {/block:Photo}
+        {block:Panorama}
+          <article class="post panorama">
+            {LinkOpenTag}
+              <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+            {LinkCloseTag}
+            {block:Caption}
+              <p class="caption">{Caption}</p>
+            {/block:Caption}
+          </article>
+        {/block:Panorama}
+        {block:Photoset}
+          <article class="post photoset">
+            {block:Photos}
+              <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+            {/block:Photos}
+            {block:Caption}
+              <p class="caption">{Caption}</p>
+            {/block:Caption}
+          </article>
+        {/block:Photoset}
+        {block:Quote}
+          <article class="post quote">
+            <span class="quote-text">{Quote}</span>
+            {block:Source}
+              <span class="quote-source">{Source}</span>
+            {/block:Source}
+          </article>
+        {/block:Quote}
+        {block:Link}
+          <article class="post link">
+            <h3 class="post-title"><a href="{URL}" {Target}>{Name}</a></h3>
+            {block:Description}
+              <p class="description">{Description}</p>
+            {/block:Description}
+          </article>
+        {/block:Link}
+        {block:Chat}
+          <article class="post chat">
+            {block:Title}
+              <h3 class="post-title"><a href="{Permalink}">{Title}</a></h3>
+            {/block:Title}
+            <ul class="chat">
+              {block:Lines}
+                <li class="{Alt} user_{UserNumber}">
+                  {block:Label}
+                    <span class="label">{Label}</span>
+                  {/block:Label}{Line}
+                </li>
+              {/block:Lines}
+            </ul>
+          </article>
+        {/block:Chat}
+        {block:Video}
+          <article class="post video">
+            {Video-500}
+            {block:Caption}
+              <p class="caption">{Caption}</p>
+            {/block:Caption}
+          </article>
+        {/block:Video}
+        {block:Audio}
+          <article class="post audio">
+            {block:AlbumArt}
+              <img class="audio-art" src="{AlbumArtURL}" />
+            {/block:AlbumArt}
+            {AudioEmbed}
+            {block:Caption}
+              <p class="caption">{Caption}</p>
+            {/block:Caption}
+          </article>
+        {/block:Audio}
+        <section class="post-meta">
+          {block:Date}
+            <time class="post-date">
+              <a class="post-date-link" href="{Permalink}">{DayOfMonthWithZero}&nbsp;{Month}&nbsp;{Year}</a>
+            </time>
+          {/block:Date}
+          {block:HasTags}
+            <ul class="post-tags">
+               {block:Tags}
+                 <li class="post-tag">
+                   <a class="post-tag-link" href="{TagURL}">{Tag}</a>
+                 </li>
+               {/block:Tags}
+            </ul>
+          {/block:HasTags}
+        </section>
+      {/block:Posts}
+    </main>
 
-    <ol id="posts">
-      {block:Posts}{block:Text}
-        <li class="post text">
-          {block:Title}
-            <h3><a href="{Permalink}">{Title}</a></h3>
-          {/block:Title}{Body}
-        </li>
-      {/block:Text}{block:Photo}
-        <li class="post photo">
-          <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+    <footer class="page-footer">
+      {block:IndexPage}
+        {block:Pagination}
+          {block:PreviousPage}
+            <a class="page-footer-link" href="{PreviousPage}">&#171; Previous</a>
+          {/block:PreviousPage}{block:NextPage}
+            <a class="page-footer-link" href="{NextPage}">Next &#187;</a>
+          {/block:NextPage}
+        {/block:Pagination}
+      {/block:IndexPage}
+      <a class="page-footer-link page-footer-link--archive" href="/archive">Archive</a>
+    </footer>
 
-          {block:Caption}
-            <div class="caption">{Caption}</div>
-          {/block:Caption}
-        </li>
-      {/block:Photo}{block:Panorama}
-        <li class="post panorama">
-          {LinkOpenTag}
-            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
-          {LinkCloseTag}{block:Caption}
-            <div class="caption">{Caption}</div>
-          {/block:Caption}
-        </li>
-      {/block:Panorama}{block:Photoset}
-        <li class="post photoset">
-          {Photoset-500}{block:Caption}
-            <div class="caption">{Caption}</div>
-          {/block:Caption}
-        </li>
-      {/block:Photoset}{block:Quote}
-        <li class="post quote">
-          "{Quote}"
-
-          {block:Source}
-            <div class="source">{Source}</div>
-          {/block:Source}
-        </li>
-      {/block:Quote}{block:Link}
-        <li class="post link">
-          <a href="{URL}" class="link" {Target}>{Name}</a>
-
-          {block:Description}
-            <div class="description">{Description}</div>
-          {/block:Description}
-        </li>
-      {/block:Link}{block:Chat}
-        <li class="post chat">
-          {block:Title}
-            <h3><a href="{Permalink}">{Title}</a></h3>
-          {/block:Title}
-
-          <ul class="chat">
-            {block:Lines}
-              <li class="{Alt} user_{UserNumber}">
-                {block:Label}
-                  <span class="label">{Label}</span>
-                {/block:Label}{Line}
-              </li>
-            {/block:Lines}
-          </ul>
-        </li>
-      {/block:Chat}{block:Video}
-        <li class="post video">
-          {Video-500}{block:Caption}
-            <div class="caption">{Caption}</div>
-          {/block:Caption}
-        </li>
-      {/block:Video}{block:Audio}
-        <li class="post audio">
-          {AudioEmbed}{block:Caption}
-            <div class="caption">{Caption}</div>
-          {/block:Caption}
-        </li>
-      {/block:Audio}{/block:Posts}
-    </ol>
-
-    <p id="footer">
-      {block:PreviousPage}
-        <a href="{PreviousPage}">&#171; Previous</a>
-      {/block:PreviousPage}{block:NextPage}
-        <a href="{NextPage}">Next &#187;</a>
-      {/block:NextPage}
-
-      <a href="/archive">Archive</a>
-    </p>
+    {block:IfGoogleAnalyticsID}
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '{text:Google Analytics ID}', 'tumblr.com');
+        ga('send', 'pageview');
+      </script>
+    {/block:IfGoogleAnalyticsID}
   </body>
 </html>
